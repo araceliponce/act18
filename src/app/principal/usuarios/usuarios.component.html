@@ -1,0 +1,36 @@
+<section class="p-3">
+  <div class="card bg-success p-3 mb-4">
+    <p class="text-white">Reto: Realizar una llamada utilizando HttpClientGet al servicio <a class="text-white" href="https://jsonplaceholder.typicode.com/todos" target="_blank" rel="noopener noreferrer">https://jsonplaceholder.typicode.com/todos</a> y mostrar tabla con los datos</p>
+  </div>
+
+  <h1 class="fs-1 text-center">CONSUMIENDO API</h1>
+
+  <pre class="d-none">{{listado|json}}</pre>
+  <!-- json holder tiene: posts, comments, albums, photos, todos, users -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>USER ID</th>
+        <th>ID</th>
+        <th>TITLE</th>
+        <th>COMPLETED</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listado" [ngClass]="{'table-default':item.completed,'table-danger':!item.completed}">
+        <td>{{item.userId}}</td>
+        <td>{{item.id}}</td>
+        <td> <label for={{item.id}}>{{item.title}}</label></td>
+        <td><input type="checkbox" name="" id={{item.id}} [checked]="item.completed" class="d-block mx-auto"></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<style>
+  label {
+    display: block;
+    min-width: 100%;
+
+  }
+</style>
